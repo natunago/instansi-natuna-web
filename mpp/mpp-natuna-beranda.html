@@ -539,7 +539,18 @@
 
       <div class="antrian-card" id="antrian-widget">
         <h4>Cari Antrian</h4>
-        <div class="note">Belum ada sistem antrian online — pilih instansi/layanan lalu klik untuk menghubungi petugas via WhatsApp.</div>
+        <div class="note" style="margin-bottom:12px">Datang langsung ke gedung MPP — Anda akan dilayani sesuai urutan kedatangan oleh petugas gerai instansi tujuan.</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:18px;padding:13px 14px;background:var(--navy-soft);border-radius:12px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--ink);line-height:1.4">
+            <span style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif">1</span>
+            Datang ke gedung MPP — tanpa perlu ambil nomor
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--ink);line-height:1.4">
+            <span style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif">2</span>
+            Menuju gerai instansi tujuan, dilayani sesuai urutan kedatangan
+          </div>
+        </div>
+        <div class="note" style="margin-bottom:10px;font-weight:600;color:var(--navy)">Ingin bertanya dulu sebelum datang?</div>
         <div class="antrian-field">
           <label>Pilih Instansi</label>
           <select id="antrian-instansi"><option>Semua Instansi</option><option>DPMPTSP</option><option>BPKPD</option><option>Kemenag</option><option>SAMSAT</option><option>Dinas PUPR</option><option>Disdukcapil</option><option>Disnaker</option><option>DLH</option><option>Kantor Pertanahan</option><option>BPS</option><option>Kejaksaan</option></select>
@@ -550,6 +561,32 @@
         </div>
         <button class="btn btn-navy" id="antrian-cari-btn" type="button">Cari Antrian</button>
         <script>
+        (function(){
+          var instansiSel = document.getElementById('antrian-instansi');
+          var layananSel = document.getElementById('antrian-layanan');
+          var allLayananOptions = Array.prototype.slice.call(layananSel.options).map(function(o){ return o.text; });
+          function refreshLayananOptions(){
+            var instansi = instansiSel.value;
+            var prevSelected = layananSel.value;
+            layananSel.innerHTML = '';
+            var semuaOpt = document.createElement('option');
+            semuaOpt.text = 'Semua Layanan';
+            layananSel.add(semuaOpt);
+            allLayananOptions.forEach(function(text){
+              if (text === 'Semua Layanan') return;
+              if (instansi === 'Semua Instansi' || text.indexOf('(' + instansi + ')') !== -1) {
+                var o = document.createElement('option');
+                o.text = text;
+                layananSel.add(o);
+              }
+            });
+            if (allLayananOptions.indexOf(prevSelected) !== -1 && (instansi === 'Semua Instansi' || prevSelected.indexOf('(' + instansi + ')') !== -1)) {
+              layananSel.value = prevSelected;
+            }
+          }
+          instansiSel.addEventListener('change', refreshLayananOptions);
+          refreshLayananOptions();
+        })();
         document.getElementById('antrian-cari-btn').addEventListener('click', function(){
           var ins = document.getElementById('antrian-instansi').value;
           var lay = document.getElementById('antrian-layanan').value;
