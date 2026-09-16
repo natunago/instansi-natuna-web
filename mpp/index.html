@@ -131,6 +131,13 @@
   .hero .tagline{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;color:#ffd8b8;margin-bottom:18px}
   .hero p.desc{color:rgba(255,255,255,.88);max-width:520px;margin-bottom:32px;font-size:1.02rem}
   .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:0;margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.18)}
+  .hero-stat{padding:0 22px;border-left:1px solid rgba(255,255,255,.18)}
+  .hero-stat:first-child{padding-left:0;border-left:none}
+  .hero-stat b{display:block;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.6rem;color:#fff;line-height:1.1;margin-bottom:4px}
+  .hero-stat span{display:block;font-size:.76rem;color:rgba(255,255,255,.82);line-height:1.4;max-width:180px}
+  .hero-wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:44px;line-height:0;pointer-events:none}
+  .hero-wave svg{display:block;width:100%;height:100%}
 
   .antrian-card{
     background:#fff;color:var(--ink);border-radius:20px;padding:26px;box-shadow:0 30px 60px -20px rgba(0,0,0,.4);
@@ -174,6 +181,14 @@
   .bar-track{height:9px;background:rgba(255,255,255,.15);border-radius:6px;overflow:hidden}
   .bar-fill{height:100%;background:linear-gradient(90deg,var(--orange),#D17D78);border-radius:6px}
 
+  /* CAPAIAN KINERJA (section terpisah dari stats-band statistik kunjungan) */
+  .kinerja-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .kinerja-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px 20px}
+  .kinerja-item b{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,3.2vw,2.2rem);color:var(--orange);display:block;margin-bottom:8px}
+  .kinerja-item span{font-size:.86rem;color:var(--ink-soft);display:block}
+  .kinerja-item small{font-size:.72rem;color:var(--ink-soft);opacity:.8;display:block;margin-top:5px}
+  .kinerja-note{text-align:center;margin-top:28px;font-size:.82rem;color:var(--ink-soft)}
+
   /* MEKANISME */
   .mek-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
   .mek-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 20px;position:relative;transition:.2s}
@@ -204,6 +219,17 @@
   .instansi-avatar{flex:none;width:46px;height:46px;border-radius:12px;background:var(--navy-soft);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700}
   .instansi-card h4{font-size:.87rem;line-height:1.35}
   .instansi-card .role{font-size:.72rem;color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+
+  /* STANDAR PELAYANAN — grid per-instansi */
+  .sp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:22px}
+  .sp-card{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 12px;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif}
+  .sp-card:hover{border-color:var(--blue);box-shadow:var(--shadow-sm);transform:translateY(-3px)}
+  .sp-card h4{font-size:.85rem;line-height:1.3;margin:0}
+  .sp-card .pill{font-size:.66rem;padding:4px 10px;font-weight:700}
+  .sp-more{text-align:center;font-size:.82rem;color:var(--ink-soft)}
+  .sp-more a{color:var(--navy);font-weight:600;text-decoration:underline}
+  .sp-modal-layanan{margin:0 0 18px 18px;padding:0;font-size:.88rem;color:var(--ink);line-height:1.8}
+  .sp-modal-meta{font-size:.76rem;color:var(--ink-soft);margin-bottom:10px;line-height:1.6}
 
   /* BERITA */
   .berita-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:44px}
@@ -378,9 +404,11 @@
     .profil-grid{grid-template-columns:1fr}
     .profil-photo{max-width:420px}
     .stats-grid{grid-template-columns:repeat(2,1fr);gap:34px}
+    .kinerja-grid{grid-template-columns:repeat(2,1fr)}
     .mek-grid{grid-template-columns:repeat(2,1fr)}
     .portal-grid{grid-template-columns:repeat(3,1fr)}
     .instansi-grid{grid-template-columns:repeat(2,1fr)}
+    .sp-grid{grid-template-columns:repeat(3,1fr)}
     .berita-grid{grid-template-columns:repeat(2,1fr)}
     .fasilitas-grid{grid-template-columns:repeat(2,1fr)}
     .testi-grid{grid-template-columns:repeat(2,1fr)}
@@ -396,6 +424,7 @@
     .mek-grid{grid-template-columns:1fr}
     .portal-grid{grid-template-columns:repeat(2,1fr)}
     .instansi-grid{grid-template-columns:1fr}
+    .sp-grid{grid-template-columns:repeat(2,1fr)}
     .berita-grid{grid-template-columns:1fr}
     .fasilitas-grid{grid-template-columns:1fr}
     .testi-grid{grid-template-columns:1fr}
@@ -403,6 +432,10 @@
     .bar-row{grid-template-columns:90px 1fr 40px}
     .topbar .container{justify-content:center;text-align:center}
     .subbar .container{justify-content:center}
+    .hero-stats{flex-direction:column;gap:14px}
+    .hero-stat{border-left:none;padding:0;padding-top:14px;border-top:1px solid rgba(255,255,255,.18)}
+    .hero-stat:first-child{border-top:none;padding-top:0}
+    .hero-stat span{max-width:none}
   }
 </style>
 </head>
@@ -448,8 +481,8 @@
         <button>Statistik <span class="caret">▾</span></button>
         <div class="nav-drop-menu">
           <a href="#statistik">Statistik Pengunjung</a>
-          <a href="#">Statistik SKM</a>
-          <a href="#">Statistik Izin Terbit</a>
+          <a href="#capaian-kinerja">Statistik SKM</a>
+          <a href="#capaian-kinerja">Statistik Izin Terbit</a>
         </div>
       </div>
 
@@ -509,8 +542,8 @@
   <a href="#instansi" onclick="toggleMobile(false)">Instansi</a>
   <div style="padding:13px 0 4px;border-bottom:1px solid var(--line);font-size:.72rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Statistik</div>
   <a href="#statistik" onclick="toggleMobile(false)" style="padding-left:14px">Statistik Pengunjung</a>
-  <a href="#" style="padding-left:14px">Statistik SKM</a>
-  <a href="#" style="padding-left:14px">Statistik Izin Terbit</a>
+  <a href="#capaian-kinerja" onclick="toggleMobile(false)" style="padding-left:14px">Statistik SKM</a>
+  <a href="#capaian-kinerja" onclick="toggleMobile(false)" style="padding-left:14px">Statistik Izin Terbit</a>
   <div style="padding:13px 0 4px;border-bottom:1px solid var(--line);font-size:.72rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Layanan</div>
   <a href="https://www.skm-dpmptsp-natuna.com/auth/respondent" target="_blank" rel="noopener" style="padding-left:14px">Survey</a>
   <a href="#" style="padding-left:14px">Sewa Gedung</a>
@@ -540,6 +573,11 @@
         <div class="hero-ctas">
           <a href="#antrian-widget" class="btn btn-orange">Cek Antrian</a>
           <a href="https://wa.me/6281256001969" target="_blank" rel="noopener" class="btn btn-outline">Hubungi WhatsApp</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b>Rp0</b><span>Biaya layanan &amp; pengaduan — 100% gratis</span></div>
+          <div class="hero-stat"><b>8</b><span>Portal layanan digital terhubung</span></div>
+          <div class="hero-stat"><b>1</b><span>Nomor WhatsApp — antrian, pengaduan &amp; konsultasi</span></div>
         </div>
       </div>
 
@@ -610,6 +648,11 @@
       </div>
     </div>
   </div>
+  <div class="hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,32 C240,60 480,0 720,18 C960,36 1200,6 1440,26 L1440,60 L0,60 Z" fill="#FFF4DC"></path>
+    </svg>
+  </div>
 </section>
 
 <!-- PROFIL -->
@@ -657,6 +700,23 @@
       <div class="bar-row"><span>SAMSAT</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div><span>8</span></div>
     </div>
     <div class="stats-caption">Sumber: <b>Laporan Penyelenggaraan MPP Kabupaten Natuna — Bulan Agustus 2026</b> · total kunjungan turun <b>30,72%</b> dibanding Juli 2026 (765 kunjungan)</div>
+  </div>
+</section>
+
+<!-- CAPAIAN KINERJA -->
+<section id="capaian-kinerja">
+  <div class="container">
+    <div class="section-head center" style="margin-left:auto;margin-right:auto">
+      <span class="eyebrow" style="justify-content:center">Capaian Kinerja</span>
+      <h2>Capaian Kinerja Pelayanan MPP Kabupaten Natuna</h2>
+    </div>
+    <div class="kinerja-grid">
+      <div class="kinerja-item"><b>0*</b><span>Aduan Masuk ke MPP (Periode berjalan)</span></div>
+      <div class="kinerja-item"><b>4,3*</b><span>Indeks Kepuasan Masyarakat (skala 5)</span></div>
+      <div class="kinerja-item"><b>1.284*</b><span>Realisasi Izin &amp; NIB Diterbitkan / Tahun</span><small>Capaian DPMPTSP selaku Koordinator MPP</small></div>
+      <div class="kinerja-item"><b>Rp186M*</b><span>Realisasi Investasi PMDN/PMA</span><small>Capaian DPMPTSP selaku Koordinator MPP</small></div>
+    </div>
+    <div class="kinerja-note">* Angka masih ilustrasi/asumsi, menunggu data resmi terbaru.</div>
   </div>
 </section>
 
@@ -744,13 +804,37 @@
     <div class="section-head center">
       <span class="eyebrow" style="justify-content:center">Publikasi</span>
       <h2>Standar Pelayanan Mal Pelayanan Publik</h2>
-      <p>Dokumen ini menghimpun Standar Pelayanan dari seluruh 10 instansi penyelenggara layanan di Mal Pelayanan Publik Kabupaten Natuna — DPMPTSP, Dinas Kependudukan dan Pencatatan Sipil, Dinas Lingkungan Hidup, Dinas Pekerjaan Umum dan Penataan Ruang, Badan Pengelolaan Keuangan dan Pendapatan Daerah, Dinas Tenaga Kerja dan Transmigrasi, Samsat/Bapenda Provinsi Kepulauan Riau, Kantor Kementerian Agama, Kantor Pertanahan, dan Badan Pusat Statistik — meliputi jenis layanan, persyaratan, mekanisme, jangka waktu, biaya/tarif, hingga mekanisme pengaduan untuk setiap layanan.</p>
+      <p>Menghimpun Standar Pelayanan dari 10 instansi penyelenggara MPP. Klik tiap kartu untuk lihat detail layanan &amp; unduh dokumennya.</p>
     </div>
-    <div style="text-align:center">
-      <a href="https://drive.google.com/file/d/1EGJtBxqNBEr7VIj_M380wnMhoEJh3Kiz/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-orange">Unduh Dokumen Standar Pelayanan MPP 2026 (PDF)</a>
+    <div class="sp-grid">
+      <button type="button" class="sp-card" onclick="openSpModal(0)"><div class="instansi-avatar">DP</div><h4>DPMPTSP Kabupaten Natuna</h4><span class="pill pill-navy">4 Jenis Layanan</span></button>
+      <button type="button" class="sp-card" onclick="openSpModal(1)"><div class="instansi-avatar">DC</div><h4>Disdukcapil</h4><span class="pill pill-navy">5 Jenis Layanan</span></button>
+      <button type="button" class="sp-card" onclick="openSpModal(2)"><div class="instansi-avatar">LH</div><h4>Dinas Lingkungan Hidup</h4><span class="pill pill-navy">1 Jenis Layanan</span></button>
+      <button type="button" class="sp-card" onclick="openSpModal(3)"><div class="instansi-avatar">PU</div><h4>Dinas PUPR</h4><span class="pill pill-navy">4 Jenis Layanan</span></button>
+      <button type="button" class="sp-card" onclick="openSpModal(4)"><div class="instansi-avatar">BP</div><h4>BPKPD</h4><span class="pill pill-navy">3 Jenis Layanan</span></button>
+      <button type="button" class="sp-card" onclick="openSpModal(5)"><div class="instansi-avatar">DN</div><h4>Disnaker</h4><span class="pill pill-navy">2 Jenis Layanan</span></button>
+      <button type="button" class="sp-card" onclick="openSpModal(6)"><div class="instansi-avatar">SM</div><h4>SAMSAT</h4><span class="pill pill-navy">1 Jenis Layanan</span></button>
+      <button type="button" class="sp-card" onclick="openSpModal(7)"><div class="instansi-avatar">KM</div><h4>Kementerian Agama Kab. Natuna</h4><span class="pill pill-navy">2 Jenis Layanan</span></button>
+      <button type="button" class="sp-card" onclick="openSpModal(8)"><div class="instansi-avatar">PT</div><h4>Kantor Pertanahan Kab. Natuna</h4><span class="pill pill-navy">5 Jenis Layanan</span></button>
+      <button type="button" class="sp-card" onclick="openSpModal(9)"><div class="instansi-avatar">BS</div><h4>BPS Kabupaten Natuna</h4><span class="pill pill-navy">3 Jenis Layanan</span></button>
     </div>
+    <div class="sp-more">Atau unduh dokumen kompilasi lengkap seluruh instansi (PDF) — <a href="https://drive.google.com/file/d/1EGJtBxqNBEr7VIj_M380wnMhoEJh3Kiz/view?usp=sharing" target="_blank" rel="noopener">buka dokumen gabungan</a></div>
   </div>
 </section>
+
+<!-- MODAL STANDAR PELAYANAN PER-INSTANSI -->
+<div class="modal-overlay" id="spModal">
+  <div class="modal-card" style="max-width:480px;max-height:86vh;overflow-y:auto">
+    <button class="modal-close" onclick="closeSpModal()">✕</button>
+    <div class="instansi-avatar" id="spAvatar" style="width:52px;height:52px;font-size:1.05rem;margin-bottom:14px"></div>
+    <h3 id="spName" style="margin-bottom:16px"></h3>
+    <div class="sub" style="margin-bottom:8px;font-weight:600;color:var(--ink)">Jenis Layanan</div>
+    <ul class="sp-modal-layanan" id="spLayanan"></ul>
+    <div class="sp-modal-meta">Dasar hukum: <span id="spDasar"></span></div>
+    <div class="sp-modal-meta" style="margin-bottom:20px">Jam pelayanan: Senin–Kamis 08.00–16.00 WIB, Jumat 08.00–15.30 WIB, Sabtu–Minggu tutup · WhatsApp: <a href="https://wa.me/6281256001969" target="_blank" rel="noopener">0812-5600-1969</a></div>
+    <a id="spLink" href="#" target="_blank" rel="noopener" class="btn btn-orange" style="width:100%;justify-content:center">Lihat / Unduh Dokumen Standar Pelayanan</a>
+  </div>
+</div>
 
 <!-- BERITA -->
 <section id="berita" style="background:#fff">
@@ -1006,8 +1090,70 @@
   function toggleMobile(state){
     document.getElementById('mobileMenu').classList.toggle('active', state);
   }
-  function openLogin(){ document.getElementById('loginModal').classList.add('active'); }
+  function openLogin(){ closeSpModal(); document.getElementById('loginModal').classList.add('active'); }
   function closeLogin(){ document.getElementById('loginModal').classList.remove('active'); }
+
+  // Standar Pelayanan per-instansi — data & modal
+  const spData = [
+    { initial:'DP', name:'DPMPTSP Kabupaten Natuna',
+      layanan:['Pelayanan Berbantuan','Pelayanan Khusus','Pelayanan Informasi','Pelayanan Konsultasi'],
+      dasar:'Keputusan Kepala DPMPTSP No. 44 Tahun 2025',
+      link:'https://bit.ly/SP_DPMPTSP_No44_Tahun2025' },
+    { initial:'DC', name:'Dinas Kependudukan dan Pencatatan Sipil',
+      layanan:['Aktivasi Identitas Kependudukan Digital (IKD)','Akta Kelahiran','Akta Kematian','Kartu Keluarga (KK)','KTP Elektronik (KTP-el)'],
+      dasar:'Keputusan Kepala Disdukcapil No. 69 Tahun 2024',
+      link:'https://bit.ly/SP_DISDUKCAPIL_No69_Tahun2024' },
+    { initial:'LH', name:'Dinas Lingkungan Hidup',
+      layanan:['Persetujuan Lingkungan'],
+      dasar:'Keputusan Kepala DLH No. 28 Tahun 2024',
+      link:'https://bit.ly/SP_DLH_No28_Th2024' },
+    { initial:'PU', name:'Dinas Pekerjaan Umum dan Penataan Ruang',
+      layanan:['Persetujuan Bangunan Gedung (PBG)','Sertifikat Laik Fungsi (SLF)','Persetujuan Kesesuaian Kegiatan Pemanfaatan Ruang (PKKPR)','Konsultasi Proses & Tahapan PBG/SLF'],
+      dasar:'Keputusan DPUPR No. 36 Tahun 2024',
+      link:'https://bit.ly/SP_PUPR_No36_Th2024' },
+    { initial:'BP', name:'Badan Pengelolaan Keuangan dan Pendapatan Daerah',
+      layanan:['Pajak Bumi dan Bangunan Perdesaan & Perkotaan (PBB-P2)','Bea Perolehan Hak atas Tanah dan Bangunan (BPHTB)','Pajak Daerah Lainnya'],
+      dasar:'Keputusan Kepala BPKPD No. 40 Tahun 2026',
+      link:'https://bit.ly/SP_BPKPD_No40_Th2026' },
+    { initial:'DN', name:'Dinas Tenaga Kerja dan Transmigrasi',
+      layanan:['Konsultasi Ketenagakerjaan','Wajib Lapor Ketenagakerjaan Perusahaan (WLKP)'],
+      dasar:'Keputusan Kepala Disnakertrans No. 08 Tahun 2026',
+      link:'https://bit.ly/SP_DisnakerNO08_Th2026' },
+    { initial:'SM', name:'Kantor Samsat Bapenda Provinsi Kepulauan Riau',
+      layanan:['Pembayaran Pajak Kendaraan Bermotor (PKB) Tahunan'],
+      dasar:'Keputusan Bersama Direktur Lalu Lintas Polda Kepri, Kepala Bapenda Kepri & Kepala PT Jasa Raharja (Persero) Cabang Kepri No. KEP/05/VI/2023, 367/SK-KABAN/BAPENDA/2023, P/14/SP/2023',
+      link:'https://bit.ly/SPBAPENDA_NO06_367_14_TH2023' },
+    { initial:'KM', name:'Kantor Kementerian Agama Kabupaten Natuna',
+      layanan:['Sertifikat Halal','Pendaftaran Surat dan Masjid'],
+      dasar:'Keputusan Kepala Kankemenag No. 02 Tahun 2026',
+      link:'https://bit.ly/SPKemenag_NO02_TH2026' },
+    { initial:'PT', name:'Kantor Pertanahan Kabupaten Natuna',
+      layanan:['7 Layanan Prioritas Pertanahan','Pengukuran Tanah','Pemberian Hak atas Tanah','Pemeliharaan Data Pendaftaran Tanah','Pendaftaran Tanah Sistematis Lengkap (PTSL)'],
+      dasar:'Peraturan Kepala BPN RI No. 1 Tahun 2010',
+      link:'https://bit.ly/3TsuD5D' },
+    { initial:'BS', name:'Badan Pusat Statistik Kabupaten Natuna',
+      layanan:['Pelayanan Perpustakaan pada Pelayanan Statistik Terpadu (PST)','Konsultasi Statistik','Rekomendasi Kegiatan Statistik'],
+      dasar:'Keputusan Kepala BPS No. 20 Tahun 2026',
+      link:'https://bit.ly/4pOW4mb' }
+  ];
+  function openSpModal(i){
+    closeLogin();
+    const d = spData[i];
+    const avatar = document.getElementById('spAvatar');
+    avatar.textContent = d.initial;
+    document.getElementById('spName').textContent = d.name;
+    const ul = document.getElementById('spLayanan');
+    ul.innerHTML = '';
+    d.layanan.forEach(function(l){
+      const li = document.createElement('li');
+      li.textContent = l;
+      ul.appendChild(li);
+    });
+    document.getElementById('spDasar').textContent = d.dasar;
+    document.getElementById('spLink').href = d.link;
+    document.getElementById('spModal').classList.add('active');
+  }
+  function closeSpModal(){ document.getElementById('spModal').classList.remove('active'); }
 
   // Accessibility widget
   function toggleA11yPanel(){
@@ -1064,6 +1210,12 @@
   }
   document.getElementById('loginModal').addEventListener('click', function(e){
     if(e.target === this) closeLogin();
+  });
+  document.getElementById('spModal').addEventListener('click', function(e){
+    if(e.target === this) closeSpModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeLogin(); closeSpModal(); }
   });
 
   // simple counter animation
