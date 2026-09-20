@@ -150,6 +150,7 @@
     font-family:'Inter',sans-serif;font-size:.9rem;color:var(--ink);
   }
   .antrian-card .btn-navy{width:100%;justify-content:center;margin-top:6px}
+  .antrian-card .btn-navy:disabled{opacity:.55;cursor:not-allowed;transform:none;background:var(--navy)}
   .antrian-live{margin-top:18px;border-top:1px dashed var(--line);padding-top:14px;display:flex;justify-content:space-between;font-size:.8rem;color:var(--ink-soft)}
   .antrian-live b{color:var(--navy);font-family:'Space Grotesk',sans-serif;font-size:1.1rem;display:block}
 
@@ -582,13 +583,13 @@
         <h4>Cari Antrian</h4>
         <div class="antrian-field">
           <label>Pilih Instansi</label>
-          <select id="antrian-instansi"><option>Semua Instansi</option><option>DPMPTSP</option><option>BPKPD</option><option>Kemenag</option><option>SAMSAT</option><option>Dinas PUPR</option><option>Disdukcapil</option><option>Disnaker</option><option>DLH</option><option>Kantor Pertanahan</option><option>BPS</option><option>Kejaksaan</option></select>
+          <select id="antrian-instansi"><option value="" disabled selected>-- Pilih Instansi --</option><option>DPMPTSP</option><option>BPKPD</option><option>Kemenag</option><option>SAMSAT</option><option>Dinas PUPR</option><option>Disdukcapil</option><option>Disnaker</option><option>DLH</option><option>Kantor Pertanahan</option><option>BPS</option><option>Kejaksaan</option></select>
         </div>
         <div class="antrian-field">
           <label>Pilih Layanan</label>
           <select id="antrian-layanan"><option>Semua Layanan</option><option>Layanan Berbantuan OSS-RBA (DPMPTSP)</option><option>Pelayanan Khusus (DPMPTSP)</option><option>Konsultasi Perizinan (DPMPTSP)</option><option>Pelayanan Informasi (DPMPTSP)</option><option>PBB (BPKPD)</option><option>BPHTB (BPKPD)</option><option>Pajak Daerah Lainnya (BPKPD)</option><option>Sertifikat Halal (Kemenag)</option><option>Pendaftaran Surau/Masjid (Kemenag)</option><option>Pajak Kendaraan Bermotor (SAMSAT)</option><option>SIMBG (Dinas PUPR)</option><option>SLF (Dinas PUPR)</option><option>PKKPR (Dinas PUPR)</option><option>Aktivasi IKD (Disdukcapil)</option><option>Adminduk Online (Disdukcapil)</option><option>Konsultasi Ketenagakerjaan (Disnaker)</option><option>Wajib Lapor Ketenagakerjaan (Disnaker)</option><option>Persetujuan Lingkungan (DLH)</option><option>Layanan Prioritas Pertanahan (Kantor Pertanahan)</option><option>Layanan Pengukuran (Kantor Pertanahan)</option><option>Pemberian Hak atas Tanah (Kantor Pertanahan)</option><option>Pemeliharaan Data Hak Tanah (Kantor Pertanahan)</option><option>PTSL (Kantor Pertanahan)</option><option>Perpustakaan Digital (BPS)</option><option>Konsultasi Statistik (BPS)</option><option>Rekomendasi Statistik (BPS)</option></select>
         </div>
-        <button class="btn btn-navy" id="antrian-cari-btn" type="button">Cari Antrian</button>
+        <button class="btn btn-navy" id="antrian-cari-btn" type="button" disabled title="Pilih instansi terlebih dahulu">Cari Antrian</button>
         <script>
         (function(){
           var instansiSel = document.getElementById('antrian-instansi');
@@ -603,25 +604,32 @@
             layananSel.add(semuaOpt);
             allLayananOptions.forEach(function(text){
               if (text === 'Semua Layanan') return;
-              if (instansi === 'Semua Instansi' || text.indexOf('(' + instansi + ')') !== -1) {
+              if (!instansi || text.indexOf('(' + instansi + ')') !== -1) {
                 var o = document.createElement('option');
                 o.text = text;
                 layananSel.add(o);
               }
             });
-            if (allLayananOptions.indexOf(prevSelected) !== -1 && (instansi === 'Semua Instansi' || prevSelected.indexOf('(' + instansi + ')') !== -1)) {
+            if (allLayananOptions.indexOf(prevSelected) !== -1 && (!instansi || prevSelected.indexOf('(' + instansi + ')') !== -1)) {
               layananSel.value = prevSelected;
             }
           }
-          instansiSel.addEventListener('change', refreshLayananOptions);
+          var cariBtn = document.getElementById('antrian-cari-btn');
+          function refreshCariBtn(){
+            var ok = !!instansiSel.value;
+            cariBtn.disabled = !ok;
+            cariBtn.title = ok ? '' : 'Pilih instansi terlebih dahulu';
+          }
+          instansiSel.addEventListener('change', function(){ refreshLayananOptions(); refreshCariBtn(); });
           refreshLayananOptions();
+          refreshCariBtn();
         })();
         document.getElementById('antrian-cari-btn').addEventListener('click', function(){
           var ins = document.getElementById('antrian-instansi').value;
           var lay = document.getElementById('antrian-layanan').value;
-          var msg = 'Halo, saya ingin menanyakan info antrian';
+          if (!ins) { return; }
+          var msg = 'Halo, saya ingin mengambil nomor antrian di ' + ins;
           if (lay !== 'Semua Layanan') { msg += ' untuk layanan ' + lay; }
-          else if (ins !== 'Semua Instansi') { msg += ' di ' + ins; }
           msg += ' — MPP Kabupaten Natuna.';
           window.open('https://wa.me/6282371861263?text=' + encodeURIComponent(msg), '_blank');
         });
