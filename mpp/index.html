@@ -482,8 +482,14 @@
   .sambutan{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:var(--radius);padding:36px 40px}
   .sambutan p{color:var(--ink-soft);font-size:1rem;line-height:1.85;margin-bottom:16px}
   .sambutan .salam{color:var(--ink);font-weight:600}
-  .sambutan-nama{margin-top:26px;padding-top:20px;border-top:1px dashed var(--line);font-size:.9rem;color:var(--ink-soft);line-height:1.6}
-  .sambutan-nama b{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;color:var(--ink)}
+  .sambutan{display:flow-root}
+  .sambutan-foto{float:left;width:236px;margin:4px 32px 16px 0;background:var(--navy);border:3px solid var(--blue);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm)}
+  .sambutan-foto img{display:block;width:100%;height:auto;aspect-ratio:900/919;object-fit:cover;object-position:50% 18%}
+  .sambutan-foto figcaption{padding:12px 14px 14px;border-top:4px solid var(--orange);text-align:center;color:rgba(255,255,255,.92);font-size:.88rem;line-height:1.45}
+  .sambutan-foto figcaption b{display:block;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1rem}
+  @media (max-width:720px){
+    .sambutan-foto{float:none;width:100%;max-width:280px;margin:0 auto 24px}
+  }
 
   /* LAYANAN — penyorotan kartu saat dituju dari dropdown */
   .sp-card{scroll-margin-top:100px}
@@ -536,6 +542,7 @@
   body.high-contrast .hukum-list li,body.high-contrast .award-list li,body.high-contrast .skm-grid li,
   body.high-contrast .filosofi-logo{background:#000 !important;border:1px solid #fff !important}
   body.high-contrast .subnav a{background:#000 !important;border-color:#fff !important}
+  body.high-contrast .sambutan-foto{background:#000 !important;border-color:#fff !important}
 
   /* LAYANAN — jenis layanan per instansi */
   .lay-ref{font-size:.88rem;color:var(--ink-soft);text-align:center;margin-bottom:22px}
@@ -819,7 +826,7 @@
     </div>
     <div class="stats-grid">
       <div class="stat-item"><b>11</b><span>Instansi Tergabung</span></div>
-      <div class="stat-item"><b>23</b><span>Jumlah Jenis Layanan</span></div>
+      <div class="stat-item"><b data-sinkron="jumlah-layanan">27</b><span>Jumlah Jenis Layanan</span></div>
       <div class="stat-item"><b>530</b><span>Total Kunjungan (Agustus 2026)</span></div>
       <div class="stat-item"><b>21,20</b><span>Rata-rata Kunjungan / Hari</span></div>
     </div>
@@ -1213,6 +1220,10 @@
         <h2>Sambutan Kepala Dinas</h2>
       </div>
       <div class="sambutan">
+        <figure class="sambutan-foto">
+          <img src="aset/sambutan-kepala-dinas-ahmad-sofian.jpg" width="900" height="919" alt="Ahmad Sofian, SE, M.Si, Kepala Dinas">
+          <figcaption><b>Ahmad Sofian, SE, M.Si</b>Kepala Dinas</figcaption>
+        </figure>
         <p class="salam">Assalamu'alaikum warahmatullahi wabarakatuh,</p>
         <p>Puji syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa, karena atas rahmat dan karunia-Nya kita dapat terus berupaya meningkatkan kualitas pelayanan publik di Kabupaten Natuna. Melalui website resmi Mal Pelayanan Publik (MPP) Kabupaten Natuna ini, kami menyampaikan salam hangat dan selamat datang kepada seluruh masyarakat yang ingin memperoleh informasi mengenai layanan terpadu yang tersedia di MPP.</p>
         <p>Website ini kami hadirkan sebagai sarana informasi, komunikasi, dan transparansi dalam mendukung pelayanan yang cepat, mudah, dan akuntabel. Kami berkomitmen untuk terus memberikan informasi yang jelas dan terpercaya, sekaligus menjadi penghubung antara masyarakat dengan berbagai instansi yang tergabung dalam MPP, meliputi Pemerintah Daerah Kabupaten Natuna, Pemerintah Provinsi Kepulauan Riau, Instansi Vertikal Pemerintah Pusat, BUMN serta BUMD dalam mewujudkan pelayanan publik yang terintegrasi di satu lokasi.</p>
@@ -1220,9 +1231,6 @@
         <p>Akhir kata, kami berharap website ini dapat memberikan manfaat dan kemudahan bagi seluruh pengunjung. Kritik dan saran yang membangun sangat kami harapkan sebagai bahan evaluasi dalam upaya peningkatan pelayanan di masa yang akan datang.</p>
         <p>Terima kasih atas kunjungan dan kepercayaan Anda.</p>
         <p class="salam" style="margin-bottom:0">Wassalamu'alaikum warahmatullahi wabarakatuh.</p>
-        <!-- Nama & jabatan tampil SATU kali. Foto (mpp/aset/sambutan-kepala-dinas-ahmad-sofian.jpg) belum tersedia saat commit ini;
-             saat foto dipasang, pindahkan blok ini menjadi keterangan (figcaption) di bawah foto. -->
-        <div class="sambutan-nama"><b>Ahmad Sofian, SE, M.Si</b>Kepala Dinas</div>
       </div>
     </div>
   </section>
@@ -1971,6 +1979,15 @@
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
+  })();
+</script>
+
+<script>
+  // Strip statistik beranda: "Jumlah Jenis Layanan" = jumlah butir layanan pada kartu halaman Layanan.
+  (function(){
+    var el = document.querySelector('[data-sinkron="jumlah-layanan"]');
+    var n = document.querySelectorAll('.lay-card .lay-list li').length;
+    if (el && n) el.textContent = String(n);
   })();
 </script>
 
