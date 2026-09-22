@@ -744,64 +744,34 @@
         <div class="hero-stats">
           <div class="hero-stat"><b>Rp0</b><span>Biaya layanan &amp; pengaduan — 100% gratis</span></div>
           <div class="hero-stat"><b>8</b><span>Portal layanan digital terhubung</span></div>
-          <div class="hero-stat"><b>1</b><span>Nomor WhatsApp — antrian, pengaduan &amp; konsultasi</span></div>
+          <div class="hero-stat"><b>1</b><span>Nomor WhatsApp — pengaduan &amp; konsultasi</span></div>
         </div>
       </div>
 
       <div class="antrian-card" id="antrian-widget">
-        <h4>Cari Antrian</h4>
+        <h4>Ambil Nomor Antrian</h4>
+        <p class="note">Pilih instansi (opsional), lalu lanjut ke halaman Ambil Nomor Antrian online.</p>
         <div class="antrian-field">
           <label>Pilih Instansi</label>
-          <select id="antrian-instansi"><option value="" disabled selected>-- Pilih Instansi --</option><option>DPMPTSP</option><option>BPKPD</option><option>Kemenag</option><option>SAMSAT</option><option>Dinas PUPR</option><option>Disdukcapil</option><option>Disnaker</option><option>DLH</option><option>Kantor Pertanahan</option><option>BPS</option><option>Kejaksaan</option></select>
+          <select id="antrian-instansi"><option value="" selected>-- Pilih Instansi (opsional) --</option><option>DPMPTSP</option><option>BPKPD</option><option>Kemenag</option><option>SAMSAT</option><option>Dinas PUPR</option><option>Disdukcapil</option><option>Disnaker</option><option>DLH</option><option>Kantor Pertanahan</option><option>BPS</option><option>Kejaksaan</option></select>
         </div>
-        <div class="antrian-field">
-          <label>Pilih Layanan</label>
-          <select id="antrian-layanan"><option>Semua Layanan</option><option>Layanan Berbantuan OSS-RBA (DPMPTSP)</option><option>Pelayanan Khusus (DPMPTSP)</option><option>Konsultasi Perizinan (DPMPTSP)</option><option>Pelayanan Informasi (DPMPTSP)</option><option>PBB (BPKPD)</option><option>BPHTB (BPKPD)</option><option>Pajak Daerah Lainnya (BPKPD)</option><option>Sertifikat Halal (Kemenag)</option><option>Pendaftaran Surau/Masjid (Kemenag)</option><option>Pajak Kendaraan Bermotor (SAMSAT)</option><option>SIMBG (Dinas PUPR)</option><option>SLF (Dinas PUPR)</option><option>PKKPR (Dinas PUPR)</option><option>Aktivasi IKD (Disdukcapil)</option><option>Adminduk Online (Disdukcapil)</option><option>Konsultasi Ketenagakerjaan (Disnaker)</option><option>Wajib Lapor Ketenagakerjaan (Disnaker)</option><option>Persetujuan Lingkungan (DLH)</option><option>Layanan Prioritas Pertanahan (Kantor Pertanahan)</option><option>Layanan Pengukuran (Kantor Pertanahan)</option><option>Pemberian Hak atas Tanah (Kantor Pertanahan)</option><option>Pemeliharaan Data Hak Tanah (Kantor Pertanahan)</option><option>PTSL (Kantor Pertanahan)</option><option>Perpustakaan Digital (BPS)</option><option>Konsultasi Statistik (BPS)</option><option>Rekomendasi Statistik (BPS)</option></select>
-        </div>
-        <button class="btn btn-navy" id="antrian-cari-btn" type="button" disabled title="Pilih instansi terlebih dahulu">Cari Antrian</button>
+        <button class="btn btn-navy" id="antrian-cari-btn" type="button">Ambil Nomor Antrian</button>
         <script>
         (function(){
-          var instansiSel = document.getElementById('antrian-instansi');
-          var layananSel = document.getElementById('antrian-layanan');
-          var allLayananOptions = Array.prototype.slice.call(layananSel.options).map(function(o){ return o.text; });
-          function refreshLayananOptions(){
-            var instansi = instansiSel.value;
-            var prevSelected = layananSel.value;
-            layananSel.innerHTML = '';
-            var semuaOpt = document.createElement('option');
-            semuaOpt.text = 'Semua Layanan';
-            layananSel.add(semuaOpt);
-            allLayananOptions.forEach(function(text){
-              if (text === 'Semua Layanan') return;
-              if (!instansi || text.indexOf('(' + instansi + ')') !== -1) {
-                var o = document.createElement('option');
-                o.text = text;
-                layananSel.add(o);
-              }
-            });
-            if (allLayananOptions.indexOf(prevSelected) !== -1 && (!instansi || prevSelected.indexOf('(' + instansi + ')') !== -1)) {
-              layananSel.value = prevSelected;
-            }
-          }
-          var cariBtn = document.getElementById('antrian-cari-btn');
-          function refreshCariBtn(){
-            var ok = !!instansiSel.value;
-            cariBtn.disabled = !ok;
-            cariBtn.title = ok ? '' : 'Pilih instansi terlebih dahulu';
-          }
-          instansiSel.addEventListener('change', function(){ refreshLayananOptions(); refreshCariBtn(); });
-          refreshLayananOptions();
-          refreshCariBtn();
+          // kode instansi (kolom `kode` di database) untuk parameter ?i= di halaman antrian.natunago.id —
+          // TIDAK ada dropdown layanan lagi di sini: dipilih ulang di halaman antrian yang datanya selalu segar.
+          var KODE = {
+            'DPMPTSP': 'DPMPTSP', 'BPKPD': 'BPKPD', 'Kemenag': 'KEMENAG', 'SAMSAT': 'SAMSAT',
+            'Dinas PUPR': 'PUPR', 'Disdukcapil': 'DISDUKCAPIL', 'Disnaker': 'DISNAKER', 'DLH': 'DLH',
+            'Kantor Pertanahan': 'PERTANAHAN', 'BPS': 'BPS', 'Kejaksaan': 'KEJAKSAAN'
+          };
+          document.getElementById('antrian-cari-btn').addEventListener('click', function(){
+            var ins = document.getElementById('antrian-instansi').value;
+            var url = 'https://antrian.natunago.id/';
+            if (ins && KODE[ins]) { url += '?i=' + encodeURIComponent(KODE[ins]); }
+            window.location.href = url;
+          });
         })();
-        document.getElementById('antrian-cari-btn').addEventListener('click', function(){
-          var ins = document.getElementById('antrian-instansi').value;
-          var lay = document.getElementById('antrian-layanan').value;
-          if (!ins) { return; }
-          var msg = 'Halo, saya ingin mengambil nomor antrian di ' + ins;
-          if (lay !== 'Semua Layanan') { msg += ' untuk layanan ' + lay; }
-          msg += ' — MPP Kabupaten Natuna.';
-          window.open('https://wa.me/6282371861263?text=' + encodeURIComponent(msg), '_blank');
-        });
         </script>
         <div class="antrian-live">
           <div><b>11</b>Instansi Aktif</div>
