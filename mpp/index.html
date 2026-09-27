@@ -557,21 +557,18 @@
   .lay-search button:hover{background:var(--line)}
   .lay-search button[hidden]{display:none}
   .lay-status{text-align:center;font-size:.82rem;color:var(--ink-soft);margin-bottom:26px;min-height:1.4em}
-  .lay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
-  .lay-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;scroll-margin-top:100px;transition:.2s}
+  .lay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+  .lay-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;scroll-margin-top:100px;transition:.2s;display:flex;flex-direction:column}
   .lay-card:hover{border-color:var(--blue);box-shadow:var(--shadow-sm)}
   .lay-card:target{border-color:var(--blue);box-shadow:0 0 0 3px rgba(227,165,33,.4)}
   .lay-card[hidden]{display:none}
-  .lay-head{display:flex;gap:14px;align-items:center;margin-bottom:14px}
-  .lay-head h3{font-size:.98rem;line-height:1.3}
-  .lay-head .role{font-size:.68rem;color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:.04em;line-height:1.3;margin-bottom:2px}
-  .lay-sub{font-size:.74rem;color:var(--ink-soft);line-height:1.4;margin-top:2px}
-  .lay-head .pill{margin-top:6px;font-size:.66rem;padding:4px 10px;font-weight:700}
-  .lay-list{list-style:disc;padding-left:18px;font-size:.88rem;line-height:1.7;color:var(--ink)}
-  .lay-list li::marker{color:var(--blue)}
+  .lay-head{margin-bottom:12px}
+  .lay-instansi{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+  .lay-head h3{font-size:1.05rem;line-height:1.3}
+  .lay-list{list-style:none;padding:0;margin:0 0 16px;font-size:.88rem;line-height:1.6;color:var(--ink-soft);flex:1}
   .lay-list li[hidden]{display:none}
-  .lay-jam{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:.78rem;color:var(--ink-soft);line-height:1.6}
-  .lay-jam b{display:block;color:var(--ink);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px}
+  .lay-actions{display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px dashed var(--line);margin-top:auto}
+  .lay-actions .btn{padding:10px 18px;font-size:.83rem}
   .lay-empty{text-align:center;color:var(--ink-soft);font-weight:600;padding:34px 0}
   .lay-empty[hidden]{display:none}
   .lay-src{text-align:center;font-size:.8rem;color:var(--ink-soft);margin-top:30px;font-style:italic}
@@ -646,17 +643,17 @@
       <div class="nav-drop" data-nav="layanan">
         <button onclick="location.hash='layanan'">Layanan <span class="caret">▾</span></button>
         <div class="nav-drop-menu">
-          <a href="#layanan-dpmptsp">DPMPTSP</a>
-          <a href="#layanan-bpkpd">BPKPD</a>
-          <a href="#layanan-kemenag">Kementerian Agama</a>
-          <a href="#layanan-samsat">SAMSAT</a>
-          <a href="#layanan-pupr">Dinas PUPR</a>
-          <a href="#layanan-disdukcapil">Disdukcapil</a>
-          <a href="#layanan-disnaker">Disnaker</a>
-          <a href="#layanan-dlh">Dinas Lingkungan Hidup</a>
-          <a href="#layanan-pertanahan">Kantor Pertanahan</a>
-          <a href="#layanan-bps">BPS</a>
-          <a href="#layanan-kejaksaan">Kejaksaan</a>
+          <a href="#standar-dpmptsp">DPMPTSP</a>
+          <a href="#standar-bpkpd">BPKPD</a>
+          <a href="#standar-kemenag">Kementerian Agama</a>
+          <a href="#standar-samsat">SAMSAT</a>
+          <a href="#standar-pupr">Dinas PUPR</a>
+          <a href="#standar-disdukcapil">Disdukcapil</a>
+          <a href="#standar-disnaker">Disnaker</a>
+          <a href="#standar-dlh">Dinas Lingkungan Hidup</a>
+          <a href="#standar-pertanahan">Kantor Pertanahan</a>
+          <a href="#standar-bps">BPS</a>
+          <a href="#standar-pelayanan">Kejaksaan</a>
         </div>
       </div>
 
@@ -705,17 +702,17 @@
   <a href="#beranda" onclick="toggleMobile(false)">Beranda</a>
   <a href="#tentang" onclick="toggleMobile(false)">Tentang</a>
   <a href="#layanan" onclick="toggleMobile(false)" style="padding:13px 0 4px;border-bottom:1px solid var(--line);font-size:.72rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Layanan</a>
-  <a href="#layanan-dpmptsp" onclick="toggleMobile(false)" style="padding-left:14px">DPMPTSP</a>
-  <a href="#layanan-bpkpd" onclick="toggleMobile(false)" style="padding-left:14px">BPKPD</a>
-  <a href="#layanan-kemenag" onclick="toggleMobile(false)" style="padding-left:14px">Kementerian Agama</a>
-  <a href="#layanan-samsat" onclick="toggleMobile(false)" style="padding-left:14px">SAMSAT</a>
-  <a href="#layanan-pupr" onclick="toggleMobile(false)" style="padding-left:14px">Dinas PUPR</a>
-  <a href="#layanan-disdukcapil" onclick="toggleMobile(false)" style="padding-left:14px">Disdukcapil</a>
-  <a href="#layanan-disnaker" onclick="toggleMobile(false)" style="padding-left:14px">Disnaker</a>
-  <a href="#layanan-dlh" onclick="toggleMobile(false)" style="padding-left:14px">Dinas Lingkungan Hidup</a>
-  <a href="#layanan-pertanahan" onclick="toggleMobile(false)" style="padding-left:14px">Kantor Pertanahan</a>
-  <a href="#layanan-bps" onclick="toggleMobile(false)" style="padding-left:14px">BPS</a>
-  <a href="#layanan-kejaksaan" onclick="toggleMobile(false)" style="padding-left:14px">Kejaksaan</a>
+  <a href="#standar-dpmptsp" onclick="toggleMobile(false)" style="padding-left:14px">DPMPTSP</a>
+  <a href="#standar-bpkpd" onclick="toggleMobile(false)" style="padding-left:14px">BPKPD</a>
+  <a href="#standar-kemenag" onclick="toggleMobile(false)" style="padding-left:14px">Kementerian Agama</a>
+  <a href="#standar-samsat" onclick="toggleMobile(false)" style="padding-left:14px">SAMSAT</a>
+  <a href="#standar-pupr" onclick="toggleMobile(false)" style="padding-left:14px">Dinas PUPR</a>
+  <a href="#standar-disdukcapil" onclick="toggleMobile(false)" style="padding-left:14px">Disdukcapil</a>
+  <a href="#standar-disnaker" onclick="toggleMobile(false)" style="padding-left:14px">Disnaker</a>
+  <a href="#standar-dlh" onclick="toggleMobile(false)" style="padding-left:14px">Dinas Lingkungan Hidup</a>
+  <a href="#standar-pertanahan" onclick="toggleMobile(false)" style="padding-left:14px">Kantor Pertanahan</a>
+  <a href="#standar-bps" onclick="toggleMobile(false)" style="padding-left:14px">BPS</a>
+  <a href="#standar-pelayanan" onclick="toggleMobile(false)" style="padding-left:14px">Kejaksaan</a>
   <div style="padding:13px 0 4px;border-bottom:1px solid var(--line);font-size:.72rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Statistik</div>
   <a href="#statistik" onclick="toggleMobile(false)" style="padding-left:14px">Statistik Pengunjung</a>
   <a href="#capaian-kinerja" onclick="toggleMobile(false)" style="padding-left:14px">Statistik SKM</a>
@@ -859,9 +856,6 @@
       </a>
       <a class="portal-card" href="https://oss.go.id/" target="_blank" rel="noopener">
         <div class="portal-icon" style="background:var(--navy)"><img src="https://s3.oss.go.id/oss/cms/BKPM-NEW-2024-ID-WHITE-ALT-1-3d1401aa98c0e5f2bc3f74dde35bf367.svg" alt="OSS RBA" loading="lazy"></div><h4>OSS RBA</h4><span>Perizinan Berusaha</span>
-      </a>
-      <a class="portal-card" href="https://sicantik.go.id/sign-in" target="_blank" rel="noopener">
-        <div class="portal-icon" style="background:#8A5A0A"><svg viewBox="0 0 24 24" fill="#fff" style="width:56%;height:56%;margin:auto"><path d="M9 2a1 1 0 0 0-1 1v1H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V3a1 1 0 1 0-2 0v1H9V3a1 1 0 0 0 0-1zM6 10h12v10H6V10zm2 3v2h2v-2H8zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2z"/></svg></div><h4>SICANTIK</h4><span>Izin Profesi</span>
       </a>
       <a class="portal-card" href="https://www.skm-dpmptsp-natuna.com/auth/respondent" target="_blank" rel="noopener">
         <div class="portal-icon" style="background:#fff;border:1.5px solid var(--line)"><img src="https://dpmptsp.natunakab.go.id/wp-content/uploads/2024/08/sekapur-sirih-150x150.png" alt="Sekapur Sirih" loading="lazy"></div><h4>SEKAPUR SIRIH</h4><span>Survei Kepuasan</span>
@@ -1236,155 +1230,216 @@
         <input type="search" id="layCari" placeholder="Cari layanan atau instansi, mis. PBB, OSS, KTP" autocomplete="off">
         <button type="button" id="layClear" hidden aria-label="Hapus pencarian">✕</button>
       </div>
-      <p class="lay-status" id="layStatus" role="status" aria-live="polite">27 layanan di 11 instansi</p>
+      <p class="lay-status" id="layStatus" role="status" aria-live="polite">28 layanan di 11 instansi</p>
       <div class="lay-grid" id="layGrid">
-      <article class="lay-card" id="layanan-dpmptsp">
-        <div class="lay-head">
-          <div class="instansi-avatar">DP</div>
-          <div>
-            <div class="role">Koordinator teknis penyelenggaraan MPP</div>
-            <h3>DPMPTSP Kabupaten Natuna</h3>
-          </div>
+      <article class="lay-card" id="layanan-dpmptsp-berusaha">
+        <div class="lay-head"><div class="lay-instansi">DPMPTSP Kabupaten Natuna</div><h3>Perizinan Berusaha</h3></div>
+        <ul class="lay-list"><li>Pendampingan OSS-RBA dan proses perizinan berusaha.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-dpmptsp">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://oss.go.id" target="_blank" rel="noopener">Urus Online →</a>
         </div>
-        <ul class="lay-list">
-          <li>Layanan Berbantuan (pendampingan OSS-RBA dan perizinan berusaha)</li>
-          <li>Pelayanan Khusus</li>
-          <li>Pelayanan Konsultasi Perizinan</li>
-          <li>Pelayanan Informasi</li>
-        </ul>
-        <div class="lay-jam"><b>Jam layanan</b>Senin–Kamis: shift pagi 08.00–12.00 dan shift siang 12.01–16.00 WIB<br>Jumat: shift pagi 08.00–11.30 dan shift siang 13.30–15.30 WIB</div>
       </article>
-      <article class="lay-card" id="layanan-bpkpd">
-        <div class="lay-head">
-          <div class="instansi-avatar">BP</div>
-          <div>
-            <h3>BPKPD</h3>
-          </div>
+      <article class="lay-card" id="layanan-pertanahan-prioritas">
+        <div class="lay-head"><div class="lay-instansi">Kantor Pertanahan Kab. Natuna</div><h3>Tujuh Layanan Prioritas Pertanahan</h3></div>
+        <ul class="lay-list"><li>Tujuh layanan prioritas bidang pertanahan bagi masyarakat.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-pertanahan">Selengkapnya</a>
         </div>
-        <ul class="lay-list">
-          <li>Pajak Bumi dan Bangunan (PBB)</li>
-          <li>Bea Perolehan Hak atas Tanah dan Bangunan (BPHTB)</li>
-          <li>Pajak Daerah Lainnya</li>
-        </ul>
-        <div class="lay-jam"><b>Jam layanan</b>Senin–Kamis 08.00–16.00 WIB<br>Jumat 08.00–15.30 WIB</div>
       </article>
-      <article class="lay-card" id="layanan-kemenag">
-        <div class="lay-head">
-          <div class="instansi-avatar">KM</div>
-          <div>
-            <h3>Kementerian Agama Kab. Natuna</h3>
-          </div>
+      <article class="lay-card" id="layanan-bpkpd-pbb">
+        <div class="lay-head"><div class="lay-instansi">BPKPD</div><h3>Pajak Bumi dan Bangunan (PBB)</h3></div>
+        <ul class="lay-list"><li>Pemutakhiran data dan pembayaran Pajak Bumi dan Bangunan (PBB).</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-bpkpd">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://pajakdaerah.natunakab.go.id/pemutakhiran/" target="_blank" rel="noopener">Urus Online →</a>
         </div>
-        <ul class="lay-list">
-          <li>Sertifikat Halal</li>
-          <li>Pendaftaran surau dan masjid</li>
-        </ul>
-        <div class="lay-jam"><b>Jam layanan</b>Menyesuaikan kebutuhan masyarakat</div>
       </article>
-      <article class="lay-card" id="layanan-samsat">
-        <div class="lay-head">
-          <div class="instansi-avatar">SM</div>
-          <div>
-            <h3>SAMSAT</h3>
-            <div class="lay-sub">Kolaborasi Pemerintah Daerah, Kepolisian, dan Jasa Raharja</div>
-          </div>
+      <article class="lay-card" id="layanan-disdukcapil-ikd">
+        <div class="lay-head"><div class="lay-instansi">Disdukcapil</div><h3>Aktivasi Identitas Kependudukan Digital (IKD)</h3></div>
+        <ul class="lay-list"><li>Aktivasi identitas kependudukan digital (IKD) di ponsel.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-disdukcapil">Selengkapnya</a>
         </div>
-        <ul class="lay-list">
-          <li>Pembayaran Pajak Kendaraan Bermotor (PKB) Tahunan</li>
-        </ul>
-        <div class="lay-jam"><b>Jam layanan</b>Senin–Kamis 08.00–12.00 WIB<br>Jumat 08.00–11.30 WIB</div>
       </article>
-      <article class="lay-card" id="layanan-pupr">
-        <div class="lay-head">
-          <div class="instansi-avatar">PU</div>
-          <div>
-            <h3>Dinas PUPR</h3>
-          </div>
+      <article class="lay-card" id="layanan-dpmptsp-nonberusaha">
+        <div class="lay-head"><div class="lay-instansi">DPMPTSP Kabupaten Natuna</div><h3>Perizinan Non Berusaha</h3></div>
+        <ul class="lay-list"><li>Pengurusan izin non berusaha melalui portal MPP Digital.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-dpmptsp">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://next-gen.mppdigital.go.id/" target="_blank" rel="noopener">Urus Online →</a>
         </div>
-        <ul class="lay-list">
-          <li>SIMBG (Sistem Informasi Manajemen Bangunan Gedung)</li>
-          <li>SLF (Sertifikat Laik Fungsi)</li>
-          <li>PKKPR (Persetujuan Kesesuaian Kegiatan Pemanfaatan Ruang)</li>
-        </ul>
-        <div class="lay-jam"><b>Jam layanan</b>Selasa 08.00–16.00 WIB</div>
       </article>
-      <article class="lay-card" id="layanan-disdukcapil">
-        <div class="lay-head">
-          <div class="instansi-avatar">DC</div>
-          <div>
-            <h3>Disdukcapil</h3>
-          </div>
+      <article class="lay-card" id="layanan-pupr-simbg">
+        <div class="lay-head"><div class="lay-instansi">Dinas PUPR</div><h3>SIMBG (Sistem Informasi Manajemen Bangunan Gedung)</h3></div>
+        <ul class="lay-list"><li>Permohonan Persetujuan Bangunan Gedung (PBG) secara daring.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-pupr">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://simbg.pu.go.id/" target="_blank" rel="noopener">Urus Online →</a>
         </div>
-        <ul class="lay-list">
-          <li>Aktivasi Identitas Kependudukan Digital (IKD)</li>
-          <li>Layanan administrasi kependudukan berbasis online (akta kelahiran, akta kematian, Kartu Keluarga, dan KTP-el)</li>
-        </ul>
       </article>
-      <article class="lay-card" id="layanan-disnaker">
-        <div class="lay-head">
-          <div class="instansi-avatar">DN</div>
-          <div>
-            <h3>Disnaker</h3>
-          </div>
+      <article class="lay-card" id="layanan-pertanahan-pengukuran">
+        <div class="lay-head"><div class="lay-instansi">Kantor Pertanahan Kab. Natuna</div><h3>Layanan Pengukuran</h3></div>
+        <ul class="lay-list"><li>Layanan pengukuran bidang tanah.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-pertanahan">Selengkapnya</a>
         </div>
-        <ul class="lay-list">
-          <li>Konsultasi Ketenagakerjaan</li>
-          <li>Wajib Lapor Ketenagakerjaan</li>
-        </ul>
       </article>
-      <article class="lay-card" id="layanan-dlh">
-        <div class="lay-head">
-          <div class="instansi-avatar">LH</div>
-          <div>
-            <h3>Dinas Lingkungan Hidup</h3>
-          </div>
+      <article class="lay-card" id="layanan-kemenag-halal">
+        <div class="lay-head"><div class="lay-instansi">Kementerian Agama Kab. Natuna</div><h3>Sertifikat Halal</h3></div>
+        <ul class="lay-list"><li>Pendaftaran sertifikasi halal produk usaha.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-kemenag">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://ptsp.halal.go.id/login" target="_blank" rel="noopener">Urus Online →</a>
         </div>
-        <ul class="lay-list">
-          <li>Persetujuan Lingkungan</li>
-        </ul>
-        <div class="lay-jam"><b>Jam layanan</b>Selasa 08.00–16.00 WIB</div>
       </article>
-      <article class="lay-card" id="layanan-pertanahan">
-        <div class="lay-head">
-          <div class="instansi-avatar">PT</div>
-          <div>
-            <h3>Kantor Pertanahan Kab. Natuna</h3>
-            <span class="pill pill-navy">Bergabung Agustus 2026</span>
-          </div>
+      <article class="lay-card" id="layanan-bps-perpustakaan">
+        <div class="lay-head"><div class="lay-instansi">BPS Kabupaten Natuna</div><h3>Perpustakaan Digital</h3></div>
+        <ul class="lay-list"><li>Akses publikasi dan data statistik melalui perpustakaan digital BPS.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-bps">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://natunakab.bps.go.id/id/publication" target="_blank" rel="noopener">Urus Online →</a>
         </div>
-        <ul class="lay-list">
-          <li>Tujuh layanan prioritas pertanahan</li>
-          <li>Layanan pengukuran</li>
-          <li>Pemberian hak atas tanah</li>
-          <li>Pemeliharaan data hak tanah</li>
-          <li>Program Pendaftaran Tanah Sistematis Lengkap (PTSL)</li>
-        </ul>
-        <div class="lay-jam"><b>Jam layanan</b>Senin, Rabu, Jumat 08.00–11.30 WIB<br>Selasa dan Kamis 13.30–16.00 WIB</div>
       </article>
-      <article class="lay-card" id="layanan-bps">
-        <div class="lay-head">
-          <div class="instansi-avatar">BS</div>
-          <div>
-            <h3>BPS Kabupaten Natuna</h3>
-            <span class="pill pill-orange">Belum aktif melayani</span>
-          </div>
+      <article class="lay-card" id="layanan-dpmptsp-konsultasi">
+        <div class="lay-head"><div class="lay-instansi">DPMPTSP Kabupaten Natuna</div><h3>Pelayanan Konsultasi Perizinan</h3></div>
+        <ul class="lay-list"><li>Konsultasi seputar proses dan persyaratan perizinan di DPMPTSP.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-dpmptsp">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://wa.me/6281256001969" target="_blank" rel="noopener">Konsultasi via WhatsApp →</a>
         </div>
-        <ul class="lay-list">
-          <li>Perpustakaan Digital</li>
-          <li>Konsultasi Statistik</li>
-          <li>Rekomendasi Statistik</li>
-        </ul>
       </article>
-      <article class="lay-card" id="layanan-kejaksaan">
-        <div class="lay-head">
-          <div class="instansi-avatar">KJ</div>
-          <div>
-            <h3>Kejaksaan Negeri Natuna</h3>
-          </div>
+      <article class="lay-card" id="layanan-disnaker-konsultasi">
+        <div class="lay-head"><div class="lay-instansi">Disnaker</div><h3>Konsultasi Ketenagakerjaan</h3></div>
+        <ul class="lay-list"><li>Konsultasi seputar hubungan dan permasalahan ketenagakerjaan.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-disnaker">Selengkapnya</a>
         </div>
-        <ul class="lay-list">
-          <li>Konsultasi / Pelayanan Hukum Gratis — tempat berkonsultasi masalah perdata atau tata usaha negara</li>
-        </ul>
+      </article>
+      <article class="lay-card" id="layanan-pertanahan-hak">
+        <div class="lay-head"><div class="lay-instansi">Kantor Pertanahan Kab. Natuna</div><h3>Pemberian Hak atas Tanah</h3></div>
+        <ul class="lay-list"><li>Permohonan pemberian hak atas tanah.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-pertanahan">Selengkapnya</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-samsat-pkb">
+        <div class="lay-head"><div class="lay-instansi">SAMSAT</div><h3>Pembayaran Pajak Kendaraan Bermotor (PKB) Tahunan</h3></div>
+        <ul class="lay-list"><li>Pembayaran pajak kendaraan bermotor tahunan, kerja sama Pemerintah Daerah, Kepolisian, dan Jasa Raharja.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-samsat">Selengkapnya</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-bpkpd-bphtb">
+        <div class="lay-head"><div class="lay-instansi">BPKPD</div><h3>Bea Perolehan Hak atas Tanah dan Bangunan (BPHTB)</h3></div>
+        <ul class="lay-list"><li>Pengurusan dan pembayaran BPHTB atas transaksi tanah dan bangunan.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-bpkpd">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://pajakdaerah.natunakab.go.id/billingbphtb/" target="_blank" rel="noopener">Urus Online →</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-dlh-lingkungan">
+        <div class="lay-head"><div class="lay-instansi">Dinas Lingkungan Hidup</div><h3>Persetujuan Lingkungan</h3></div>
+        <ul class="lay-list"><li>Permohonan persetujuan lingkungan untuk kegiatan usaha.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-dlh">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://amdalnet.kemenlh.go.id/#/" target="_blank" rel="noopener">Urus Online →</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-dpmptsp-lkpm">
+        <div class="lay-head"><div class="lay-instansi">DPMPTSP Kabupaten Natuna</div><h3>Konsultasi LKPM</h3></div>
+        <ul class="lay-list"><li>Konsultasi Laporan Kegiatan Penanaman Modal (LKPM) bagi pelaku usaha.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-dpmptsp">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://wa.me/6282289386508" target="_blank" rel="noopener">Konsultasi via WhatsApp →</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-pertanahan-pemeliharaan">
+        <div class="lay-head"><div class="lay-instansi">Kantor Pertanahan Kab. Natuna</div><h3>Pemeliharaan Data Hak Tanah</h3></div>
+        <ul class="lay-list"><li>Pemeliharaan dan pemutakhiran data hak atas tanah.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-pertanahan">Selengkapnya</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-disdukcapil-adminduk">
+        <div class="lay-head"><div class="lay-instansi">Disdukcapil</div><h3>Layanan Administrasi Kependudukan Online</h3></div>
+        <ul class="lay-list"><li>Layanan administrasi kependudukan berbasis online (akta kelahiran, akta kematian, Kartu Keluarga, dan KTP-el).</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-disdukcapil">Selengkapnya</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-pupr-slf">
+        <div class="lay-head"><div class="lay-instansi">Dinas PUPR</div><h3>SLF (Sertifikat Laik Fungsi)</h3></div>
+        <ul class="lay-list"><li>Pengurusan Sertifikat Laik Fungsi bangunan gedung.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-pupr">Selengkapnya</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-bps-konsultasi">
+        <div class="lay-head"><div class="lay-instansi">BPS Kabupaten Natuna</div><h3>Konsultasi Statistik</h3></div>
+        <ul class="lay-list"><li>Konsultasi kebutuhan data dan statistik.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-bps">Selengkapnya</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-kejaksaan-hukum">
+        <div class="lay-head"><div class="lay-instansi">Kejaksaan Negeri Natuna</div><h3>Konsultasi / Pelayanan Hukum Gratis</h3></div>
+        <ul class="lay-list"><li>Konsultasi / Pelayanan Hukum Gratis — tempat berkonsultasi masalah perdata atau tata usaha negara.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-pelayanan">Selengkapnya</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-dpmptsp-modal">
+        <div class="lay-head"><div class="lay-instansi">DPMPTSP Kabupaten Natuna</div><h3>Layanan Penanaman Modal</h3></div>
+        <ul class="lay-list"><li>Layanan informasi dan fasilitasi penanaman modal di Kabupaten Natuna.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-dpmptsp">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://investa.natunago.id/" target="_blank" rel="noopener">Urus Online →</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-pertanahan-ptsl">
+        <div class="lay-head"><div class="lay-instansi">Kantor Pertanahan Kab. Natuna</div><h3>Program Pendaftaran Tanah Sistematis Lengkap (PTSL)</h3></div>
+        <ul class="lay-list"><li>Pendaftaran tanah sistematis lengkap (PTSL) secara massal.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-pertanahan">Selengkapnya</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-bpkpd-lainnya">
+        <div class="lay-head"><div class="lay-instansi">BPKPD</div><h3>Pajak Daerah Lainnya</h3></div>
+        <ul class="lay-list"><li>Pembayaran jenis pajak daerah lainnya secara online.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-bpkpd">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://ebilling.natunakab.go.id/" target="_blank" rel="noopener">Urus Online →</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-kemenag-masjid">
+        <div class="lay-head"><div class="lay-instansi">Kementerian Agama Kab. Natuna</div><h3>Pendaftaran Surau dan Masjid</h3></div>
+        <ul class="lay-list"><li>Pendaftaran dan pendataan rumah ibadah surau dan masjid.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-kemenag">Selengkapnya</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-pupr-pkkpr">
+        <div class="lay-head"><div class="lay-instansi">Dinas PUPR</div><h3>PKKPR (Persetujuan Kesesuaian Kegiatan Pemanfaatan Ruang)</h3></div>
+        <ul class="lay-list"><li>Permohonan kesesuaian kegiatan pemanfaatan ruang secara daring.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-pupr">Selengkapnya</a>
+          <a class="btn btn-orange" href="https://gistaru.atrbpn.go.id/" target="_blank" rel="noopener">Urus Online →</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-disnaker-wlkp">
+        <div class="lay-head"><div class="lay-instansi">Disnaker</div><h3>Wajib Lapor Ketenagakerjaan</h3></div>
+        <ul class="lay-list"><li>Pelaporan wajib lapor ketenagakerjaan bagi perusahaan.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-disnaker">Selengkapnya</a>
+        </div>
+      </article>
+      <article class="lay-card" id="layanan-bps-rekomendasi">
+        <div class="lay-head"><div class="lay-instansi">BPS Kabupaten Natuna</div><h3>Rekomendasi Statistik</h3></div>
+        <ul class="lay-list"><li>Permohonan rekomendasi kegiatan statistik sektoral.</li></ul>
+        <div class="lay-actions">
+          <a class="btn btn-ghost-navy" href="#standar-bps">Selengkapnya</a>
+        </div>
       </article>
       </div>
       <p class="lay-empty" id="layEmpty" hidden>Tidak ada layanan yang cocok</p>
@@ -1890,13 +1945,15 @@
       return {
         el: c,
         head: norm(c.querySelector('.lay-head').textContent),
+        instansi: norm((c.querySelector('.lay-instansi') || {}).textContent || ''),
         items: Array.prototype.slice.call(c.querySelectorAll('.lay-list li')).map(function(li){ return { el: li, text: norm(li.textContent) }; })
       };
     });
     function apply(){
       var q = norm(input.value).trim();
       var tokens = q ? q.split(/\s+/) : [];
-      var nItems = 0, nCards = 0;
+      var nItems = 0;
+      var instansiSet = {};
       data.forEach(function(d){
         var headHit = tokens.every(function(t){ return d.head.indexOf(t) > -1; });
         var shown = 0;
@@ -1906,12 +1963,13 @@
           if (ok) shown++;
         });
         d.el.hidden = shown === 0;
-        if (shown) { nCards++; nItems += shown; }
+        if (shown) { instansiSet[d.instansi] = true; nItems += shown; }
       });
+      var nInstansi = Object.keys(instansiSet).length;
       clear.hidden = !input.value;
       empty.hidden = nItems > 0;
       status.textContent = nItems > 0
-        ? nItems + ' layanan di ' + nCards + ' instansi' + (q ? ' cocok dengan pencarian' : '')
+        ? nItems + ' layanan di ' + nInstansi + ' instansi' + (q ? ' cocok dengan pencarian' : '')
         : '0 layanan ditemukan';
     }
     function reset(){ input.value = ''; apply(); }
