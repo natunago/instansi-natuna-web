@@ -450,7 +450,7 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
 .dropdown a.innovation-link::before{content:"";position:absolute;left:10px;top:50%;width:5px;height:5px;border-radius:50%;background:var(--teal);transform:translateY(-50%);}
 .old-hero{display:none;}
 .hero-showcase{position:relative;background:var(--navy-2);overflow:hidden;padding:0;}
-.hero-showcase .slideshow{width:100%;aspect-ratio:2.05/1;border-radius:0;background:var(--navy-2);}
+.hero-showcase .slideshow{width:100%;height:clamp(360px,39vw,620px);aspect-ratio:auto;border-radius:0;background:var(--navy-2);}
 .hero-showcase .slide{background:var(--navy-2);}
 .hero-showcase .slide > img{width:100%;height:100%;object-fit:cover;background:transparent;}
 .gratification-slide > img{object-position:center center;}
@@ -477,6 +477,20 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
 .slide-arrow:hover{background:var(--navy);transform:translateY(-50%) scale(1.04);}
 .slide-arrow.prev{left:24px}.slide-arrow.next{right:24px}.slide-arrow svg{width:20px;height:20px;}
 .slide-context{position:absolute;left:24px;bottom:20px;z-index:4;background:rgba(0,55,42,.72);color:#fff;border-radius:999px;padding:9px 14px;font-size:12px;font-weight:600;backdrop-filter:blur(8px);}
+.announcement-section{padding:20px 0 22px;background:#fff;}
+.announcement-shell{width:min(1320px,calc(100% - 48px));margin:0 auto;}
+.announcement-strip{display:grid;grid-template-columns:280px minmax(0,1fr);min-height:74px;overflow:hidden;border:2px solid #4CAF68;border-radius:22px;background:#fff;}
+.announcement-heading{display:flex;align-items:center;justify-content:center;gap:13px;padding:0 24px;background:#42A95F;color:#fff;font-weight:800;font-size:18px;letter-spacing:.025em;}
+.announcement-heading svg{width:24px;height:24px;flex:0 0 auto;}
+.announcement-window{display:flex;align-items:center;overflow:hidden;}
+.announcement-track{display:flex;width:max-content;animation:announcementTicker 28s linear infinite;will-change:transform;}
+.announcement-window:hover .announcement-track,.announcement-window:focus-within .announcement-track{animation-play-state:paused;}
+.announcement-group{display:flex;align-items:center;gap:34px;padding-right:34px;white-space:nowrap;}
+.announcement-item{display:inline-flex;align-items:center;gap:12px;color:#30433E;font-size:16px;font-weight:600;}
+.announcement-item:hover{color:var(--teal);}
+.announcement-item .announce-arrow{font-size:20px;color:var(--teal);}
+.announcement-dot{width:7px;height:7px;flex:0 0 auto;border-radius:50%;background:#5B625F;}
+@keyframes announcementTicker{to{transform:translateX(-50%);}}
 #kinerja{background:#F1F7F3;color:var(--ink);}
 .stat-kicker,.stat-actions a,.stat-source a,.stat-skm{color:var(--teal);}
 .stat-controls button,.stat-card.featured{background:var(--navy);border-color:var(--navy);}
@@ -493,7 +507,7 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
   .menu-toggle{display:block;}
   .dropdown.mega-dropdown{position:static;width:100%;transform:none!important;grid-template-columns:1fr;padding:6px 14px 12px;}
   .mega-panel{padding:13px}.nav-trigger{width:100%;justify-content:space-between;padding:14px 16px;border-radius:0;}
-  .hero-showcase .slideshow{aspect-ratio:2.05/1;}
+  .hero-showcase .slideshow{height:clamp(210px,56vw,360px);aspect-ratio:auto;}
   .hero-showcase .slide > img{object-position:center;}
   .gratification-slide > img{object-position:center center;}
   .gratification-slide::before{background:linear-gradient(90deg,rgba(247,253,249,.98) 0%,rgba(247,253,249,.9) 34%,rgba(247,253,249,.28) 58%,rgba(247,253,249,0) 72%);}
@@ -505,6 +519,12 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
   .slide-arrow{width:34px;height:34px}.slide-arrow.prev{left:8px}.slide-arrow.next{right:8px}
   .slide-context{display:none;}
   .hero-showcase .slide-dots{bottom:12px;left:auto;right:12px;transform:none;}
+  .announcement-section{padding:14px 0 16px;}
+  .announcement-shell{width:calc(100% - 24px);}
+  .announcement-strip{grid-template-columns:165px minmax(0,1fr);min-height:60px;border-radius:16px;}
+  .announcement-heading{gap:8px;padding:0 14px;font-size:12px;}
+  .announcement-heading svg{width:19px;height:19px;}
+  .announcement-item{font-size:13px;}
 }
 @media(max-width:600px){
   .gratification-brand{display:none;}
@@ -514,7 +534,13 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
   .gratification-pledge{gap:7px;margin-top:12px;padding:6px 9px;font-size:8px;letter-spacing:.035em;white-space:nowrap;}
   .gratification-pledge::before{width:8px;height:8px;}
   .slide-arrow{display:none;}
+  .announcement-strip{grid-template-columns:122px minmax(0,1fr);min-height:56px;}
+  .announcement-heading{padding:0 10px;font-size:10px;letter-spacing:.04em;}
+  .announcement-heading svg{width:17px;height:17px;}
+  .announcement-group{gap:24px;padding-right:24px;}
+  .announcement-item{gap:8px;font-size:12px;}
 }
+@media(prefers-reduced-motion:reduce){.announcement-window{overflow-x:auto;}.announcement-track{animation:none;}}
 
 </style>
 </head>
@@ -673,6 +699,33 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
     <div class="slide-dots" aria-label="Pilih slide"><button class="dot active" type="button" data-i="0" aria-label="Tampilkan slide SKM"></button><button class="dot" type="button" data-i="1" aria-label="Tampilkan slide Fiktif Positif"></button><button class="dot" type="button" data-i="2" aria-label="Tampilkan slide Tolak Gratifikasi"></button></div>
   </div>
 </section>
+
+<aside class="announcement-section" aria-label="Pengumuman DPMPTSP Natuna">
+  <div class="announcement-shell">
+    <div class="announcement-strip">
+      <div class="announcement-heading">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11v2a2 2 0 0 0 2 2h2l4 4V5L7 9H5a2 2 0 0 0-2 2Z"></path><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"></path></svg>
+        <span>PENGUMUMAN</span>
+      </div>
+      <div class="announcement-window">
+        <div class="announcement-track">
+          <div class="announcement-group">
+            <a class="announcement-item" href="#layanan">Disediakan layanan konsultasi LKPM untuk TW 4 di Mal Pelayanan Publik Natuna <span class="announce-arrow">↗</span></a>
+            <span class="announcement-dot" aria-hidden="true"></span>
+            <a class="announcement-item" href="https://dpmptsp.natunakab.go.id/kopi-awan/" target="_blank" rel="noopener">Tim Inovasi Kopi Awan akan datang ke Sedanau tanggal 15 Oktober, ditunggu ya <span class="announce-arrow">↗</span></a>
+            <span class="announcement-dot" aria-hidden="true"></span>
+          </div>
+          <div class="announcement-group" aria-hidden="true">
+            <span class="announcement-item">Disediakan layanan konsultasi LKPM untuk TW 4 di Mal Pelayanan Publik Natuna <span class="announce-arrow">↗</span></span>
+            <span class="announcement-dot"></span>
+            <span class="announcement-item">Tim Inovasi Kopi Awan akan datang ke Sedanau tanggal 15 Oktober, ditunggu ya <span class="announce-arrow">↗</span></span>
+            <span class="announcement-dot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
 
 <section id="kinerja" aria-labelledby="stat-title"><div class="wrap">
 <div class="stat-heading"><div><span class="stat-kicker">NATUNA DALAM ANGKA</span><h2 id="stat-title">Pelayanan terbuka, data bercerita.</h2><p>Statistik perizinan, kepuasan masyarakat, dan penanaman modal.</p></div><div class="stat-controls"><label>Periode statistik<select id="stat-period"><option value="2026">Jan–Agu 2026</option><option value="2025">Tahun 2025</option></select></label><button type="button" id="stat-download">Unduh CSV ↓</button></div></div>
