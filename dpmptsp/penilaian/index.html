@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dashboard penilaian DPMPTSP Kabupaten Natuna untuk memantau agenda, PIC, jadwal, portal, dan hasil penilaian pelayanan publik.">
+  <meta name="theme-color" content="#075a46">
+  <title>Dashboard Penilaian | DPMPTSP Kabupaten Natuna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@500;600&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="../" aria-label="Kembali ke beranda DPMPTSP Natuna">
+        <img src="../assets/logo-natuna.webp" alt="Logo Kabupaten Natuna">
+        <span><small>Kabupaten Natuna</small><strong>DPMPTSP NATUNA</strong></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav aria-label="Navigasi halaman penilaian">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#daftar">Daftar Penilaian</a>
+        <a href="#kalender">Kalender</a>
+        <a href="#hasil">Hasil &amp; Capaian</a>
+      </nav>
+      <a class="home-button" href="../">Beranda DPMPTSP</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="dashboard">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="shell hero-content">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span>Pusat kendali penilaian</p>
+          <h1>Satu halaman untuk<br><em>menjaga kesiapan.</em></h1>
+          <p class="lead">Daftar kerja bersama bagi PIC dan pimpinan untuk mengenali agenda, membuka portal resmi, memantau jadwal, dan mencatat hasil penilaian DPMPTSP Kabupaten Natuna.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#daftar">Lihat daftar penilaian <span>↓</span></a>
+            <button class="button secondary" id="downloadCsv" type="button">Unduh daftar kerja CSV</button>
+          </div>
+        </div>
+        <aside class="hero-note">
+          <span class="note-kicker">Catatan pengelolaan</span>
+          <h2>Data awal siap dilengkapi.</h2>
+          <p>PIC, tenggat, progres, dan nilai belum ditetapkan pada halaman ini. Perbarui berdasarkan surat dan hasil resmi.</p>
+          <div class="security-note"><b>Jangan simpan</b> username, kata sandi, atau kode akses portal pada halaman publik.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="summary-section" aria-label="Ringkasan dashboard">
+      <div class="shell summary-grid">
+        <article><span>Total agenda</span><strong id="totalCount">10</strong><small>penilaian terpetakan</small></article>
+        <article><span>Portal tersedia</span><strong id="portalCount">9</strong><small>tautan siap dibuka</small></article>
+        <article><span>PIC</span><strong id="picCount">10</strong><small>perlu ditetapkan</small></article>
+        <article class="highlight"><span>Jadwal</span><strong id="scheduleCount">10</strong><small>perlu dikonfirmasi</small></article>
+      </div>
+    </section>
+
+    <section class="section assessments" id="daftar">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow dark"><span></span>Daftar kerja</p><h2>Penilaian yang perlu<br><em>kita kawal bersama.</em></h2></div>
+          <p>Gunakan pencarian dan filter untuk menemukan penilaian. Setiap kartu memuat fokus awal serta jalan cepat menuju portal resminya.</p>
+        </div>
+        <div class="toolbar" role="search">
+          <label class="search-field"><span>Cari penilaian</span><input id="searchInput" type="search" placeholder="Contoh: PEKPPP, Ombudsman, inovasi"></label>
+          <label><span>Kelompok</span><select id="typeFilter"><option value="all">Semua kelompok</option><option value="utama">Penilaian utama</option><option value="pendukung">Penilaian pendukung</option></select></label>
+          <label><span>Status</span><select id="statusFilter"><option value="all">Semua status</option><option value="Perlu konfirmasi">Perlu konfirmasi</option><option value="Persiapan">Persiapan</option><option value="Berjalan">Berjalan</option><option value="Menunggu hasil">Menunggu hasil</option><option value="Selesai">Selesai</option></select></label>
+        </div>
+        <p class="result-count" id="resultCount" aria-live="polite"></p>
+        <div class="assessment-grid" id="assessmentGrid"></div>
+      </div>
+    </section>
+
+    <section class="section calendar-section" id="kalender">
+      <div class="shell">
+        <div class="section-heading light-heading">
+          <div><p class="eyebrow light"><span></span>Kalender kerja</p><h2>Ritme persiapan<br><em>sepanjang tahun.</em></h2></div>
+          <p>Rencana awal ini membantu pembagian pekerjaan. Tanggal resmi tetap mengikuti surat dari instansi penilai.</p>
+        </div>
+        <div class="quarter-grid">
+          <article><span>TW 1</span><h3>Petakan &amp; evaluasi</h3><ul><li>Arsipkan hasil tahun sebelumnya</li><li>Tetapkan PIC dan tim pendukung</li><li>Susun daftar kekurangan bukti</li></ul></article>
+          <article><span>TW 2</span><h3>Lengkapi bukti</h3><ul><li>Perbarui standar pelayanan</li><li>Siapkan data OSS, SKM, dan pengaduan</li><li>Cek pembukaan portal penilaian</li></ul></article>
+          <article><span>TW 3</span><h3>Verifikasi &amp; survei</h3><ul><li>Unggah bukti sesuai surat resmi</li><li>Dampingi verifikasi atau uji petik</li><li>Pantau survei pengguna layanan</li></ul></article>
+          <article><span>TW 4</span><h3>Hasil &amp; tindak lanjut</h3><ul><li>Catat nilai dan rekomendasi</li><li>Susun rencana perbaikan</li><li>Siapkan dokumen untuk tahun berikutnya</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section results-section" id="hasil">
+      <div class="shell results-grid">
+        <div><p class="eyebrow dark"><span></span>Hasil &amp; capaian</p><h2>Catat yang resmi,<br><em>tindak lanjuti yang kurang.</em></h2><p class="results-lead">Belum ada nilai resmi yang dicatat pada dashboard ini. Bagian ini disiapkan untuk hasil, dokumen penetapan, dan rencana tindak lanjut.</p></div>
+        <div class="empty-results">
+          <div class="empty-icon" aria-hidden="true">✓</div>
+          <h3>Ruang hasil sudah disiapkan</h3>
+          <p>Data yang perlu dicatat setelah pengumuman resmi:</p>
+          <ul><li>Nilai, kategori, dan peringkat</li><li>Tahun serta dokumen hasil</li><li>Temuan dan rekomendasi penilai</li><li>PIC dan tenggat tindak lanjut</li></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row"><div><strong>DPMPTSP Kabupaten Natuna</strong><p>Dashboard pemantauan penilaian pelayanan publik dan investasi.</p></div><div><a href="../">Beranda</a><a href="../#kinerja">Statistik</a><a href="../investa/">INVESTA</a></div></div>
+    <div class="shell footer-bottom"><span>© <span id="year"></span> Pemerintah Kabupaten Natuna</span><span>Data diperbarui berdasarkan dokumen resmi.</span></div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

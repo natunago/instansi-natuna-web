@@ -498,7 +498,7 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
 .stat-bar:nth-child(even){background:#67BE9F;}
 .stat-official{border-left-color:var(--teal);background:#E5F3EB;}
 @media(max-width:1120px){nav.primary>a,.nav-item{font-size:12.5px;padding:9px 8px}.nav-cta{display:none}.brand-text .name{font-size:15px}}
-@media(max-width:900px){
+@media(max-width:1120px){
   nav.primary{position:absolute;top:100%;left:0;right:0;bottom:auto;margin:0;max-height:calc(100vh - 120px);padding:12px 18px 24px;background:#fff;box-shadow:0 20px 32px rgba(7,69,54,.16);flex-direction:column;align-items:stretch;gap:2px;overflow-y:auto;transform:translateY(-8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,transform .2s ease,visibility .2s ease;}
   nav.primary.open{transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto;}
   nav.primary>a{padding:14px 16px;border-bottom:1px solid var(--line);border-radius:0;}
@@ -605,6 +605,14 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
           <a href="https://dpmptsp.natunakab.go.id/maklumat-pelayanan/" target="_blank" rel="noopener">Maklumat Pelayanan</a>
           <a href="https://dpmptsp.natunakab.go.id/mekanisme-pelayanan-2/" target="_blank" rel="noopener">Mekanisme Pelayanan</a>
           <a href="https://dpmptsp.natunakab.go.id/motto-pelayanan/" target="_blank" rel="noopener">Motto Pelayanan</a>
+        </div>
+      </div>
+      <div class="nav-item-wrap">
+        <button class="nav-item nav-chev nav-trigger" type="button" aria-expanded="false">Penilaian <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"></path></svg></button>
+        <div class="dropdown">
+          <a href="/penilaian/">Dashboard Penilaian</a>
+          <a href="/penilaian/#kalender">Kalender Penilaian</a>
+          <a href="/penilaian/#hasil">Hasil &amp; Capaian</a>
         </div>
       </div>
       <div class="nav-item-wrap">
