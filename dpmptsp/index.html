@@ -110,8 +110,11 @@
     padding:10px 18px; border-radius:999px; font-size:13.5px;
     white-space:nowrap;
     box-shadow:0 6px 16px rgba(200,155,60,0.35);
+    border:0; cursor:pointer; font-family:inherit;
+    display:inline-flex; align-items:center; gap:8px;
   }
   .nav-cta:hover{background:var(--gold-2);}
+  .nav-cta svg{width:16px;height:16px;flex:0 0 auto;}
   .menu-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
   .menu-toggle span{display:block; width:24px; height:2px; background:var(--navy); margin:5px 0;}
 
@@ -142,6 +145,37 @@
     color:var(--navy); white-space:nowrap;
   }
   .dropdown a:hover{background:var(--sand-2); color:var(--teal);}
+
+  /* ===== Login gateway ===== */
+  body.modal-open{overflow:hidden;}
+  .login-modal[hidden]{display:none;}
+  .login-modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;}
+  .login-backdrop{position:absolute;inset:0;border:0;background:rgba(3,35,28,.72);backdrop-filter:blur(7px);cursor:pointer;}
+  .login-panel{position:relative;width:min(520px,100%);max-height:calc(100vh - 48px);overflow:auto;background:#fff;border-radius:24px;padding:30px;box-shadow:0 28px 80px rgba(0,35,27,.32);}
+  .login-close{position:absolute;right:18px;top:18px;width:40px;height:40px;border:0;border-radius:50%;background:#F0F5F2;color:var(--navy);display:grid;place-items:center;cursor:pointer;}
+  .login-close:hover{background:#E3EEE8;}
+  .login-close svg{width:20px;height:20px;}
+  .login-identity{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-right:48px;}
+  .login-identity img{width:52px;height:52px;object-fit:contain;}
+  .login-identity span{display:block;color:var(--teal);font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;}
+  .login-identity strong{display:block;color:var(--navy);font-family:'Fraunces',serif;font-size:18px;}
+  .login-panel h2{font-family:'Fraunces',serif;color:var(--navy);font-size:30px;margin:0 0 7px;}
+  .login-intro{color:#61716B;font-size:14px;line-height:1.6;margin:0 0 22px;}
+  .login-options{display:grid;gap:12px;}
+  .login-option{width:100%;border-radius:16px;padding:18px 20px;text-align:left;display:flex;align-items:center;gap:15px;font-family:inherit;}
+  .login-option-icon{width:42px;height:42px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;}
+  .login-option-icon svg{width:21px;height:21px;}
+  .login-option-copy{flex:1;min-width:0;}
+  .login-option strong{display:block;font-size:16px;margin-bottom:4px;}
+  .login-option small{display:block;font-size:12.5px;line-height:1.5;font-weight:500;}
+  .login-option.disabled{border:1px solid #DDE5E1;background:#F4F6F5;color:#929C97;cursor:not-allowed;}
+  .login-option.disabled .login-option-icon{background:#E8ECEA;color:#89938E;}
+  .login-option.active{border:1px solid var(--teal);background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;box-shadow:0 10px 24px rgba(5,91,70,.2);transition:transform .18s,box-shadow .18s;}
+  .login-option.active:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(5,91,70,.28);}
+  .login-option.active .login-option-icon{background:rgba(255,255,255,.13);}
+  .login-option.active small{color:rgba(255,255,255,.78);}
+  .login-arrow{font-size:22px;flex:0 0 auto;}
+  .login-footnote{margin:16px 2px 0;color:#7A8781;font-size:11.5px;line-height:1.55;}
 
   /* ===== Hero ===== */
   .hero{
@@ -497,14 +531,15 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
 .stat-bar,.stat-track i{background:var(--teal);}
 .stat-bar:nth-child(even){background:#67BE9F;}
 .stat-official{border-left-color:var(--teal);background:#E5F3EB;}
-@media(max-width:1120px){nav.primary>a,.nav-item{font-size:12.5px;padding:9px 8px}.nav-cta{display:none}.brand-text .name{font-size:15px}}
+@media(max-width:1120px){nav.primary>a,.nav-item{font-size:12.5px;padding:9px 8px}.brand-text .name{font-size:15px}}
 @media(max-width:1120px){
   nav.primary{position:absolute;top:100%;left:0;right:0;bottom:auto;margin:0;max-height:calc(100vh - 120px);padding:12px 18px 24px;background:#fff;box-shadow:0 20px 32px rgba(7,69,54,.16);flex-direction:column;align-items:stretch;gap:2px;overflow-y:auto;transform:translateY(-8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,transform .2s ease,visibility .2s ease;}
   nav.primary.open{transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto;}
   nav.primary>a{padding:14px 16px;border-bottom:1px solid var(--line);border-radius:0;}
   .nav-item-wrap{flex-wrap:wrap;border-bottom:1px solid var(--line);}
   .nav-item-wrap>.nav-item{flex:1;}
-  .menu-toggle{display:block;}
+  .nav-cta{display:inline-flex;order:2;margin-left:auto;padding:9px 14px;box-shadow:none;}
+  .menu-toggle{display:block;order:3;}
   .dropdown.mega-dropdown{position:static;width:100%;transform:none!important;grid-template-columns:1fr;padding:6px 14px 12px;}
   .mega-panel{padding:13px}.nav-trigger{width:100%;justify-content:space-between;padding:14px 16px;border-radius:0;}
   .hero-showcase .slideshow{height:clamp(210px,56vw,360px);aspect-ratio:auto;}
@@ -527,6 +562,16 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
   .announcement-item{font-size:13px;}
 }
 @media(max-width:600px){
+  .brand-text .eyebrow{display:none;}
+  .brand-text .name{font-size:14px;}
+  .brand-mark{width:38px;height:38px;}
+  .nav-row{gap:8px;}
+  .nav-cta{padding:8px 11px;font-size:12px;}
+  .login-modal{padding:14px;}
+  .login-panel{padding:24px 18px;border-radius:20px;}
+  .login-panel h2{font-size:26px;}
+  .login-identity{margin-bottom:20px;}
+  .login-option{padding:15px 14px;gap:12px;}
   .gratification-brand{display:none;}
   .gratification-copy{left:24px;width:58%;}
   .gratification-copy h2{font-size:30px;line-height:.92;}
@@ -587,7 +632,7 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
       </div>
       <a href="#kinerja">Statistik</a>
       <div class="nav-item-wrap"><button class="nav-item nav-chev nav-trigger" type="button" aria-expanded="false">Tentang <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"></path></svg></button><div class="dropdown"><a href="https://dpmptsp.natunakab.go.id/tentang-3/" target="_blank" rel="noopener">Tentang DPMPTSP</a><a href="https://dpmptsp.natunakab.go.id/struktur-organisasi/" target="_blank" rel="noopener">Struktur Organisasi</a><a href="https://dpmptsp.natunakab.go.id/visi-dan-misi/" target="_blank" rel="noopener">Visi &amp; Misi</a><a href="https://dpmptsp.natunakab.go.id/penghargaan/" target="_blank" rel="noopener">Penghargaan</a><a href="https://dpmptsp.natunakab.go.id/saranaprasarana/" target="_blank" rel="noopener">Sarana &amp; Prasarana</a></div></div>
-      <div class="nav-item-wrap"><button class="nav-item nav-chev nav-trigger" type="button" aria-expanded="false">Layanan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"></path></svg></button><div class="dropdown"><a href="https://oss.go.id/" target="_blank" rel="noopener">Perizinan Berusaha</a><a href="#layanan">Perizinan Non Berusaha</a><a href="#investasi">Pelayanan Penanaman Modal</a><span class="dropdown-label service-label">Inovasi</span><a class="innovation-link" href="/investa/">INVESTA</a><a class="innovation-link" href="https://dpmptsp.natunakab.go.id/gajahmina/" target="_blank" rel="noopener">Gajahmina</a><a class="innovation-link" href="https://dpmptsp.natunakab.go.id/jumat-impian/" target="_blank" rel="noopener">Jum'at Impian</a><a class="innovation-link" href="https://dpmptsp.natunakab.go.id/kopi-awan/" target="_blank" rel="noopener">Kopi Awan</a></div></div>
+      <div class="nav-item-wrap"><button class="nav-item nav-chev nav-trigger" type="button" aria-expanded="false">Layanan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"></path></svg></button><div class="dropdown"><a href="https://oss.go.id/" target="_blank" rel="noopener">Perizinan Berusaha</a><a href="#layanan">Perizinan Non Berusaha</a><a href="#investasi">Pelayanan Penanaman Modal</a><a href="https://mpp.natunakab.go.id/" target="_blank" rel="noopener">MPP Natuna</a><span class="dropdown-label service-label">Inovasi</span><a class="innovation-link" href="/investa/">INVESTA</a><a class="innovation-link" href="https://dpmptsp.natunakab.go.id/gajahmina/" target="_blank" rel="noopener">Gajahmina</a><a class="innovation-link" href="https://dpmptsp.natunakab.go.id/jumat-impian/" target="_blank" rel="noopener">Jum'at Impian</a><a class="innovation-link" href="https://dpmptsp.natunakab.go.id/kopi-awan/" target="_blank" rel="noopener">Kopi Awan</a></div></div>
       <div class="nav-item-wrap">
         <button class="nav-item nav-chev nav-trigger" type="button" aria-expanded="false">PPID <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"></path></svg></button>
         <div class="dropdown wide grouped ppid-dropdown">
@@ -608,14 +653,6 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
         </div>
       </div>
       <div class="nav-item-wrap">
-        <button class="nav-item nav-chev nav-trigger" type="button" aria-expanded="false">Penilaian <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"></path></svg></button>
-        <div class="dropdown">
-          <a href="/penilaian/">Dashboard Penilaian</a>
-          <a href="/penilaian/#kalender">Kalender Penilaian</a>
-          <a href="/penilaian/#hasil">Hasil &amp; Capaian</a>
-        </div>
-      </div>
-      <div class="nav-item-wrap">
         <button class="nav-item nav-chev nav-trigger" type="button" aria-expanded="false">Lainnya <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"></path></svg></button>
         <div class="dropdown wide grouped">
           <span class="dropdown-label">Informasi &amp; Investasi</span><span class="dropdown-label">Pengaduan</span>
@@ -627,9 +664,39 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
         </div>
       </div>
     </nav>
-    <a class="nav-cta" href="https://mpp.natunakab.go.id/" target="_blank" rel="noopener">MPP Natuna</a>
+    <button class="nav-cta" id="loginOpen" type="button" aria-haspopup="dialog" aria-controls="loginModal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21a8 8 0 0 0-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      Masuk
+    </button>
   </div>
 </header>
+
+<div class="login-modal" id="loginModal" hidden>
+  <button class="login-backdrop" type="button" aria-label="Tutup pilihan masuk" data-login-close></button>
+  <section class="login-panel" role="dialog" aria-modal="true" aria-labelledby="loginTitle" aria-describedby="loginDescription">
+    <button class="login-close" type="button" aria-label="Tutup" data-login-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+    </button>
+    <div class="login-identity">
+      <img src="assets/logo-natuna.webp" alt="Logo Kabupaten Natuna">
+      <div><span>Kabupaten Natuna</span><strong>DPMPTSP Natuna</strong></div>
+    </div>
+    <h2 id="loginTitle">Masuk ke layanan</h2>
+    <p class="login-intro" id="loginDescription">Pilih ruang layanan yang ingin Anda gunakan.</p>
+    <div class="login-options">
+      <button class="login-option disabled" type="button" disabled aria-describedby="publicSoon">
+        <span class="login-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21a8 8 0 0 0-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
+        <span class="login-option-copy"><strong>Layanan Masyarakat</strong><small id="publicSoon">Pengajuan layanan perizinan daerah yang belum tersedia melalui OSS dan MPP Digital — segera hadir.</small></span>
+      </button>
+      <a class="login-option active" href="/penilaian/">
+        <span class="login-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 8h8M8 12h8M8 16h5"></path></svg></span>
+        <span class="login-option-copy"><strong>Tim Penilaian DPMPTSP</strong><small>Buka dashboard pemantauan agenda, PIC, jadwal, dan hasil penilaian.</small></span>
+        <span class="login-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <p class="login-footnote">Dashboard penilaian masih menggunakan akses awal. Autentikasi akun pegawai akan ditambahkan sebelum menyimpan data internal.</p>
+  </section>
+</div>
 
 <section class="hero old-hero" id="beranda-lama" aria-hidden="true">
   <div class="wrap">
@@ -994,6 +1061,39 @@ nav.primary > a,.nav-item{font-size:13.5px;padding:10px 11px;white-space:nowrap;
   const nav = document.getElementById('primaryNav');
   toggle.addEventListener('click', () => nav.classList.toggle('open'));
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  // Login gateway for public services and the internal assessment workspace.
+  (function(){
+    const openButton = document.getElementById('loginOpen');
+    const modal = document.getElementById('loginModal');
+    const panel = modal.querySelector('.login-panel');
+    const closeButtons = modal.querySelectorAll('[data-login-close]');
+    let previousFocus = null;
+
+    function openModal(){
+      previousFocus = document.activeElement;
+      modal.hidden = false;
+      document.body.classList.add('modal-open');
+      requestAnimationFrame(() => modal.querySelector('.login-close').focus());
+    }
+    function closeModal(){
+      modal.hidden = true;
+      document.body.classList.remove('modal-open');
+      if(previousFocus) previousFocus.focus();
+    }
+    openButton.addEventListener('click', openModal);
+    closeButtons.forEach(button => button.addEventListener('click', closeModal));
+    document.addEventListener('keydown', event => {
+      if(event.key === 'Escape' && !modal.hidden) closeModal();
+      if(event.key !== 'Tab' || modal.hidden) return;
+      const focusable = Array.from(panel.querySelectorAll('a[href],button:not([disabled])'));
+      if(!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if(event.shiftKey && document.activeElement === first){event.preventDefault();last.focus();}
+      else if(!event.shiftKey && document.activeElement === last){event.preventDefault();first.focus();}
+    });
+  })();
 
   // Dropdown submenus (click/tap to toggle; hover also works on desktop via CSS)
   (function(){
